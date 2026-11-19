@@ -1,29 +1,34 @@
+import sys
+import os
 import streamlit as st
 import re
 import json
-import os
 import time
+
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
 
 from streamlit_webrtc import webrtc_streamer, VideoProcessorBase
 import av
 
-from utils.confidence_analyzer import (
+from app_utils.confidence_analyzer import (
     analyze_frame,
     get_confidence_result
 )
 
-from utils.speech_to_text import (
+from app_utils.speech_to_text import (
     recognize_speech,
     recognize_speech_from_audio
 )
 
-from utils.ai_helper import (
+from app_utils.ai_helper import (
     generate_interview_questions,
     evaluate_answer,
     evaluate_interview
 )
 
-from utils.pdf_generator import generate_pdf
+from app_utils.pdf_generator import generate_pdf
 from database.database import save_interview
 
 

@@ -1,7 +1,13 @@
+import sys
+import os
 import streamlit as st
 import pandas as pd
 import json
 import re
+
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
 
 from database.database import get_interview_history
 
@@ -1220,7 +1226,7 @@ for idx, interview in enumerate(
 
         try:
 
-            from utils.pdf_generator import generate_pdf
+            from app_utils.pdf_generator import generate_pdf
 
 
             hist_pdf_path = generate_pdf(

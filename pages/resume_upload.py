@@ -1,8 +1,13 @@
-import streamlit as st
+import sys
 import os
+import streamlit as st
 
-from utils.ai_helper import analyze_resume
-from utils.resume_parser import extract_text
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+
+from app_utils.ai_helper import analyze_resume
+from app_utils.resume_parser import extract_text
 
 
 # =========================================================
